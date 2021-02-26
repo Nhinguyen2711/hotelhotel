@@ -6,6 +6,7 @@
 package com.hotel.service;
 
 import com.hotel.entity.Booking;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,4 +17,8 @@ import org.springframework.stereotype.Service;
 public interface BookingServiceIF {
     public Booking save(Booking booking);
     public Booking findByUid(String bookinguid);
+        public List<Booking> getAllBooking();
+    public void saveBooking(Booking booking);
+    public void deleteBooking(int bookingID);
+    public Booking getBooking(int bookingID);
 }

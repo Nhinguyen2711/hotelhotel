@@ -195,6 +195,9 @@ public class CartController {
             booking.setCheckInDate(in);
             booking.setCheckOutDate(out);
             booking.setBookinguid(bookingUID());
+            booking.setGuesName(name);
+            booking.setEmail(email);
+            booking.setPhoneNumber(phonenumber);
             booking = bookingService.save(booking);
 
             List<Item> cart = (List<Item>) this.cart;

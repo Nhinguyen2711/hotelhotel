@@ -16,7 +16,16 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface RoomServiceIF {
+
     public List<Room> getAllRoom();
+
     public List<Room> searchAvailableRoom(int roomTypeId, String checkInDate, String checkOutDate);
+
     public Room findRoomId(int id);
+
+    public void saveRoom(Room room);
+
+    public void deleteRoom(int roomid);
+
+    public Room getRoom(int roomid);
 }

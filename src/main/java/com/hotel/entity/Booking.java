@@ -1,7 +1,6 @@
 package com.hotel.entity;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -18,8 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -37,15 +34,14 @@ public class Booking implements Serializable {
 	private String bookinguid;
 
 	@Column(name = "bookingdate")
-	//@Column(name = "bookingdate", columnDefinition = "DATE")
-	@DateTimeFormat (pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate bookingDate;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Column(name = "checkindate")
 	private Date checkInDate;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Column(name = "checkoutdate")
 	private Date checkOutDate;
 
@@ -61,20 +57,75 @@ public class Booking implements Serializable {
 	@Column(name = "price")
 	private double price;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Column(name = "cancelDate")
 	private Date cancelDate;
-
+        
+        @Column (name= "guesName")
+        private String guesName;
+        
+        @Column (name="phoneNumber")
+        private String phoneNumber;
+        
+        @Column (name="email")
+        private String email;
+        
+        @OneToMany (mappedBy = "booking",fetch = FetchType.LAZY)
+        private List<Charge> charge;
+        
 	@OneToMany(mappedBy = "booking", fetch = FetchType.LAZY)
 	private List<BookingDetails> bookingdetails;
 
 	@OneToMany(mappedBy = "booking", fetch = FetchType.LAZY)
 	private List<Invoice> invoices;
+        
+        @ManyToOne
+        @JoinColumn(name = "room_type_id")
+        private RoomType roomtype;
+        
+        @ManyToOne
+        @JoinColumn(name ="promid")
+        private Promotion promotion;
 
+    public RoomType getRoomtype() {
+        return roomtype;
+    }
 
-	@ManyToOne
-	@JoinColumn(name = "promid")
-	private Promotion promotion;
+    public void setRoomtype(RoomType roomtype) {
+        this.roomtype = roomtype;
+    }
+
+    public String getGuesName() {
+        return guesName;
+    }
+
+    public void setGuesName(String guesName) {
+        this.guesName = guesName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<Charge> getCharge() {
+        return charge;
+    }
+
+    public void setCharge(List<Charge> charge) {
+        this.charge = charge;
+    }
 
 	public Booking() {
 		super();

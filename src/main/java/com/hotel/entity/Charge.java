@@ -25,10 +25,30 @@ public class Charge {
 	@ManyToOne
 	@JoinColumn(name = "serviceid")
 	private Services service;
+        
+        @ManyToOne
+        @JoinColumn(name ="bookingid")
+        private Booking booking;
 
 	@ManyToOne
 	@JoinColumn(name = "booking_detalis_id")
 	private BookingDetails bookingDetails;
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+
+    public BookingDetails getBookingDetails() {
+        return bookingDetails;
+    }
+
+    public void setBookingDetails(BookingDetails bookingDetails) {
+        this.bookingDetails = bookingDetails;
+    }
 
 	public Charge() {
 		super();
