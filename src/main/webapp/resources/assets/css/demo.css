@@ -1,4 +1,19 @@
+.bdate{
+    padding: 8px 2px;
+    margin: 8px 4px;
+}
+.bdate label{
+    padding: 6px 0;
+}
+.bdate input{
+    margin-left: 5px;
+    font-size: 25px;
+    color: #cccccc;
 
+    border-width: 1px;
+    border-radius: 7px 7px;
+    border-color: #cccccc;
+}
 .update-pro{
 	margin: 15px 25px;}
 

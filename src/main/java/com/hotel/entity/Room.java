@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "room")
@@ -38,6 +39,9 @@ public class Room implements Serializable{
         
 	@Column(name = "description")
 	private String description;
+        
+        @Transient
+        private int roomtypeid;
 
 	@ManyToOne
 	@JoinColumn(name = "room_type_id")
@@ -61,6 +65,15 @@ public class Room implements Serializable{
         this.roomtype = roomtype;
         this.images = images;
     }
+
+    public int getRoomtypeid() {
+        return roomtypeid;
+    }
+
+    public void setRoomtypeid(int roomtypeid) {
+        this.roomtypeid = roomtypeid;
+    }
+    
 
     public int getRoomid() {
         return roomid;

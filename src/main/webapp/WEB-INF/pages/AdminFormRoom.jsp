@@ -59,13 +59,13 @@ and open the template in the editor.
                         <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 
                             <li class="nav-item dropdown">
-                                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="../resources/assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span >Hizrian</span></span> </a>
+                                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="../resources/assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span >${pageContext.request.userPrincipal.name}</span></span> </a>
                                 <ul class="dropdown-menu dropdown-user">
                                     <li>
                                         <div class="user-box">
                                             <div class="u-img"><img src="../resources/assets/img/profile.jpg" alt="user"></div>
                                             <div class="u-text">
-                                                <h4>Hizrian</h4>
+                                                <h4>${pageContext.request.userPrincipal.name}</h4>
                                                 <p class="text-muted">hello@themekita.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
                                         </div>
                                     </li>
@@ -76,7 +76,16 @@ and open the template in the editor.
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#"><i class="ti-settings"></i> Account Setting</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                                    <form action="<c:url value='/j_spring_security_logout' />" method="post" id="logoutForm">
+                                        <input type="hidden" name="${_csrf.parameterName}"
+                                               value="${_csrf.token}" />
+                                    </form>
+                                    <script>
+                                        function formSubmit() {
+                                            document.getElementById("logoutForm").submit();
+                                        }
+                                    </script>
+                                    <a class="dropdown-item" href="javascript:formSubmit()"><i class="fa fa-power-off"></i> Logout</a>
                                 </ul>
                                 <!-- /.dropdown-user -->
                             </li>
@@ -93,7 +102,7 @@ and open the template in the editor.
                         <div class="info">
                             <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                                 <span>
-                                    Hizrian
+                                    ${pageContext.request.userPrincipal.name}
                                     <span class="user-level">Administrator</span>
                                     <span class="caret"></span>
                                 </span>
@@ -186,38 +195,16 @@ and open the template in the editor.
                                 <form:hidden path="roomid" />
                                 <div class="form-group">
                                     <label for="largeInput">Room Number</label>
-                                    <form:input path="roomnumber" class="form-control form-control-lg" id="largeInput" placeholder="Large Input"/>
+                                    <form:input path="roomnumber" class="form-control form-control-lg" id="largeInput" placeholder="101"/>
                                 </div>
-                                <div class="form-group">
-                                    <label for="largeSelect">Type Name</label>
-                                    <form:select path="roomtype.typename" class="form-control form-control-lg" id="largeSelect">
-                                        <form:option value="Standard(STD)"/>
-                                        <form:option value="Superior(SUP)"/>
-                                        <form:option value="Deluxe(DLX)"/>
-                                        <form:option value="Suite(SUT)"/>                                   
-                                    </form:select>
-                                </div>
+
                                 <div class="form-group">
                                     <label for="comment">Description</label>
-                                    <form:textarea path="roomtype.description" class="form-control" id="comment" rows="5"/>
+                                    <form:textarea path="description" class="form-control" id="comment" rows="5"/>
 
                                     </textarea>
                                 </div>
-                                <div class="form-group">
-                                    <label for="defaultSelect">Number People</label>
-                                    <form:select path="roomtype.numberofpeopke" class="form-control form-control" id="defaultSelect">
-                                        <form:option value="1"/>
-                                        <form:option value="2"/>
-                                        <form:option value="3"/>
-                                        <form:option value="4"/>
-                                        <form:option value="5"/>
-                                        <form:option value="6"/>
-                                        <form:option value="7"/>
-                                        <form:option value="8"/>
-                                        <form:option value="9"/>
-                                        <form:option value="10"/>
-                                    </form:select>
-                                </div>
+
                                 <div class="form-group">
                                     <label for="largeInput">Floor</label>
                                     <form:input path="floor" class="form-control form-control" id="defaultInput" placeholder="Default Input"/>
@@ -227,9 +214,16 @@ and open the template in the editor.
                                     <form:input path="price" class="form-control form-control-sm" id="smallInput" placeholder="Small Input"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlFile1">Image File</label>
-                                    <form:input  path="roomtype.image" type="file" class="form-control-file" id="exampleFormControlFile1"/>
+                                    <label for="defaultSelect">Room Type</label>
+                                    <form:select path="roomtype.typename" class="form-control form-control" id="defaultSelect">
+                                        <c:forEach var="listroomtype" items="${pagedListRoomType.pageList}">
+
+                                            <form:option value="${listroomtype.typename}"></form:option>
+                                            
+                                        </c:forEach>
+                                    </form:select>
                                 </div>
+
                                 <div class="card-action">
                                     <button class="btn btn-success">Submit</button>
                                     <button class="btn btn-danger">Cancel</button>

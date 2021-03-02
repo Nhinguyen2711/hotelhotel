@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -58,10 +57,20 @@ public class Employee implements java.io.Serializable {
 	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	@JoinTable(name = "employee_role", joinColumns = @JoinColumn(name = "empId"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> listRole;
+        
+
 
 	public Employee() {
 		super();
 	}
+
+    public Employee(String username, String password, Set<Role> listRole) {
+        this.username = username;
+        this.password = password;
+        this.listRole = listRole;
+    }
+
+
 
 	public int getEmpId() {
 		return empId;
@@ -143,5 +152,6 @@ public class Employee implements java.io.Serializable {
 	public void setListRole(Set<Role> listRole) {
 		this.listRole = listRole;
 	}
+
 
 }

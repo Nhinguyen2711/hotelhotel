@@ -57,13 +57,13 @@ and open the template in the editor.
                         <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 
                             <li class="nav-item dropdown">
-                                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="../resources/assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span >Hizrian</span></span> </a>
+                                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="../resources/assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span >${pageContext.request.userPrincipal.name}</span></span> </a>
                                 <ul class="dropdown-menu dropdown-user">
                                     <li>
                                         <div class="user-box">
                                             <div class="u-img"><img src="../resources/assets/img/profile.jpg" alt="user"></div>
                                             <div class="u-text">
-                                                <h4>Hizrian</h4>
+                                                <h4>${pageContext.request.userPrincipal.name}</h4>
                                                 <p class="text-muted">hello@themekita.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
                                         </div>
                                     </li>
@@ -74,7 +74,16 @@ and open the template in the editor.
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#"><i class="ti-settings"></i> Account Setting</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                                    <form action="<c:url value='/j_spring_security_logout' />" method="post" id="logoutForm">
+                                        <input type="hidden" name="${_csrf.parameterName}"
+                                               value="${_csrf.token}" />
+                                    </form>
+                                    <script>
+                                        function formSubmit() {
+                                            document.getElementById("logoutForm").submit();
+                                        }
+                                    </script>
+                                    <a class="dropdown-item" href="javascript:formSubmit()"><i class="fa fa-power-off"></i> Logout</a>
                                 </ul>
                                 <!-- /.dropdown-user -->
                             </li>
@@ -91,7 +100,7 @@ and open the template in the editor.
                         <div class="info">
                             <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                                 <span>
-                                    Hizrian
+                                    ${pageContext.request.userPrincipal.name}
                                     <span class="user-level">Administrator</span>
                                     <span class="caret"></span>
                                 </span>
@@ -178,7 +187,10 @@ and open the template in the editor.
                     <div class="card">
                         <div class="header">
                             <a href="<c:url value="/admin/formRoom" />" class="btn btn-success waves-effect">Create Room</a>
+                            <a href="<c:url value="/admin/formRoomType" />" class="btn btn-success waves-effect">Create Room Type</a>
+                            <a href="<c:url value="/admin/Listroomtype" />" class="btn btn-success waves-effect">List Room Type</a>
                         </div>
+
                         <div class="body table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead class="btn-success">   

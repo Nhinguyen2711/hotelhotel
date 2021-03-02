@@ -16,4 +16,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface InvoiceServiceIF {
     public Invoice save(Invoice invoice);
+    public void deleteInvoice(int bookingId);
 }

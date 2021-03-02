@@ -33,7 +33,8 @@ public class BookingService implements BookingServiceIF{
 
     @Override
     public Booking findByUid(String bookinguid) {
-        return bookingRepository.findByUid(bookinguid);
+        Booking booking = bookingRepository.findByUid(bookinguid);
+        return booking;
     }
             @Override
     public List<Booking> getAllBooking() {
@@ -52,13 +53,13 @@ public class BookingService implements BookingServiceIF{
     }
 
     @Override
-    public void deleteBooking(int bookingID) {
-        bookingRepository.deleteById(bookingID);
+    public void deleteBooking(int bookingId) {
+        bookingRepository.deleteById(bookingId);
     }
 
     @Override
-    public Booking getBooking(int bookingID) {
-        Optional<Booking> booking = bookingRepository.findById(bookingID);
+    public Booking getBooking(int bookingId) {
+        Optional<Booking> booking = bookingRepository.findById(bookingId);
         return booking.isPresent() ? booking.get() : null;
     }
     

@@ -6,7 +6,9 @@
 package com.hotel.controller;
 
 import com.hotel.entity.Booking;
+import com.hotel.entity.Invoice;
 import com.hotel.service.BookingService;
+import com.hotel.service.InvoiceService;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminBookingController {
     @Autowired
     BookingService bookingService;
+    @Autowired
+    InvoiceService invoiceService;
     
     @GetMapping(value="/ListBooking")
     public String listBooking(HttpServletRequest request, Model model){
@@ -51,7 +55,7 @@ public class AdminBookingController {
     @PostMapping(value="addBooking")
     public String addBooking(@ModelAttribute("booking")Booking booking){
     bookingService.saveBooking(booking);
-    return "redirect: /admin/ListBooking";
+    return "redirect:/admin/ListBooking";
     }
     
     @GetMapping(value = "updateBooking")
@@ -62,9 +66,10 @@ public class AdminBookingController {
     }
     
     @GetMapping(value = "deleteBooking")
-    public String deleteBooking(@RequestParam("bookingId")int bookingID){
-    bookingService.deleteBooking(bookingID);
-    return "redirect: /admin/ListBooking";
+    public String deleteBooking(@RequestParam("bookingId")int bookingId){  
+    invoiceService.deleteInvoice(bookingId);
+    bookingService.deleteBooking(bookingId);
+    return "redirect:/admin/ListBooking";
     }
     
     

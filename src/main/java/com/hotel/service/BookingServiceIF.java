@@ -19,6 +19,6 @@ public interface BookingServiceIF {
     public Booking findByUid(String bookinguid);
         public List<Booking> getAllBooking();
     public void saveBooking(Booking booking);
-    public void deleteBooking(int bookingID);
-    public Booking getBooking(int bookingID);
+    public void deleteBooking(int bookingId);
+    public Booking getBooking(int bookingId);
 }

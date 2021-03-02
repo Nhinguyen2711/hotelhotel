@@ -21,9 +21,15 @@ and open the template in the editor.
         <title>E-Hotel</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <link rel="stylesheet" href="../resources/assets/css/bootstrap.min.css">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
         <link rel="stylesheet" href="../resources/assets/css/ready.css">
         <link rel="stylesheet" href="../resources/assets/css/demo.css">
+        <link rel="stylesheet" href="../resources/assets/css/style.css">
+        <link rel="stylesheet" href="../resources/assets/css/bootstrap.css">
     </head>
     <body>
         <div class="wrapper">
@@ -177,99 +183,59 @@ and open the template in the editor.
                     </ul>
                 </div>
             </div>
+            <!-- Basic Table -->
             <div class="main-panel">
-                <div class="content">
-                    <div class="container-fluid">
-                        <h4 class="page-title"></h4>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <a href="<c:url value="/admin/Listroom" />"   style="text-decoration:none;">
-                                    <div class="card card-stats card-warning">
-                                        <div class="card-body ">
-                                            <div class="row">
+                <div class="content">                   
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Form Room Type</div>
+                        </div>                       
+                        <form:form class="form-horizontal" action="addRoomType" method="POST" modelAttribute="roomtype">
+                            <div class="card-body">
+                                <form:hidden path="roomtypeid" />
+                                <div class="form-group">
+                                    <label for="largeInput">Room Type</label>
+                                    <form:input path="typename" class="form-control form-control-lg" id="largeInput" placeholder="room type"/>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="comment">Description</label>
+                                    <form:textarea path="description" class="form-control" id="comment" rows="5"/>
 
-                                                <div class="col-7 d-flex align-items-center">
-
-                                                    <div class="numbers">
-
-                                                        <p class="card-category">Rooms</p>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="<c:url value="/admin/ListService" />"   style="text-decoration:none;">
-                                    <div class="card card-stats card-success">
-                                        <div class="card-body ">
-                                            <div class="row">
-
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <div class="numbers">
-                                                        <p class="card-category">Service</p>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="<c:url value="/admin/ListBooking" />"   style="text-decoration:none;">
-                                    <div class="card card-stats card-danger">
-                                        <div class="card-body">
-                                            <div class="row">
-
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <div class="numbers">
-                                                        <p class="card-category">Booking</p>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card card-stats card-primary">
-                                    <div class="card-body ">
-                                        <div class="row">
-
-                                            <div class="col-7 d-flex align-items-center">
-                                                <div class="numbers">
-                                                    <p class="card-category">Promotions</p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="defaultSelect">Number People</label>
+                                    <form:select path="numberofpeopke" class="form-control form-control" id="defaultSelect">
+                                        <form:option value="1"/>
+                                        <form:option value="2"/>
+                                        <form:option value="3"/>
+                                        <form:option value="4"/>
+                                        <form:option value="5"/>
+                                        <form:option value="6"/>
+                                        <form:option value="7"/>
+                                        <form:option value="8"/>
+                                        <form:option value="9"/>
+                                        <form:option value="10"/>
+                                    </form:select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Image File</label>
+                                    <form:input  path="image" type="file" class="form-control-file" id="exampleFormControlFile1"/>
+                                </div>
+                                <div class="card-action">
+                                    <button class="btn btn-success">Submit</button>
+                                    <button class="btn btn-danger">Cancel</button>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="card card-stats card-dangers">
-                                    <div class="card-body">
-                                        <div class="row">
+                        </form:form>
 
-                                            <div class="col-7 d-flex align-items-center">
-                                                <div class="numbers">
-                                                    <p class="card-category">Operation</p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                </div>
-            </div>
+                </div>  
+            </div> 
+            <!-- #END# Basic Table -->
+
 
     </body>
     <script src="../resources/assets/js/core/jquery.3.2.1.min.js"></script>

@@ -50,7 +50,7 @@ public class RoomService implements RoomServiceIF{
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Set<ConstraintViolation<Room>> violations = factory.getValidator().validate(room);
         if (violations.isEmpty()) {
-            roomTypeRepository.save(room.getRoomtype());
+  
             roomRepository.save(room);
         } else {
             System.out.println("validate wrong, do not execute database script");

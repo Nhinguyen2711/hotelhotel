@@ -6,8 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -21,9 +19,15 @@ and open the template in the editor.
         <title>E-Hotel</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <link rel="stylesheet" href="../resources/assets/css/bootstrap.min.css">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
         <link rel="stylesheet" href="../resources/assets/css/ready.css">
         <link rel="stylesheet" href="../resources/assets/css/demo.css">
+        <link rel="stylesheet" href="../resources/assets/css/style.css">
+        <link rel="stylesheet" href="../resources/assets/css/bootstrap.css">
     </head>
     <body>
         <div class="wrapper">
@@ -126,30 +130,30 @@ and open the template in the editor.
                     </div>
                     <ul class="nav">
                         <li class="nav-item active">
-                            <a href="<c:url value="/admin/" />">
-                                <i class="la la-dashboard"></i>
-                                <p>Home</p>
+                            <a href="<c:url value="/admin/" />" >
+                            <i class="la la-dashboard"></i>
+                            <p>Home</p>
 
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<c:url value="/admin/Listroom" />">
-                                <i class="la la-table"></i>
-                                <p>Rooms</p>
+                            <i class="la la-table"></i>
+                            <p>Rooms</p>
 
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<c:url value="/admin/ListService" />">
-                                <i class="la la-keyboard-o"></i>
-                                <p>Service</p>
+                            <i class="la la-keyboard-o"></i>
+                            <p>Service</p>
 
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<c:url value="/admin/ListBooking" />">
-                                <i class="la la-th"></i>
-                                <p>Booking</p>
+                            <i class="la la-th"></i>
+                            <p>Booking</p>
 
                             </a>
                         </li>
@@ -177,99 +181,72 @@ and open the template in the editor.
                     </ul>
                 </div>
             </div>
+            <!-- Basic Table -->
             <div class="main-panel">
-                <div class="content">
-                    <div class="container-fluid">
-                        <h4 class="page-title"></h4>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <a href="<c:url value="/admin/Listroom" />"   style="text-decoration:none;">
-                                    <div class="card card-stats card-warning">
-                                        <div class="card-body ">
-                                            <div class="row">
-
-                                                <div class="col-7 d-flex align-items-center">
-
-                                                    <div class="numbers">
-
-                                                        <p class="card-category">Rooms</p>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="<c:url value="/admin/ListService" />"   style="text-decoration:none;">
-                                    <div class="card card-stats card-success">
-                                        <div class="card-body ">
-                                            <div class="row">
-
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <div class="numbers">
-                                                        <p class="card-category">Service</p>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="<c:url value="/admin/ListBooking" />"   style="text-decoration:none;">
-                                    <div class="card card-stats card-danger">
-                                        <div class="card-body">
-                                            <div class="row">
-
-                                                <div class="col-7 d-flex align-items-center">
-                                                    <div class="numbers">
-                                                        <p class="card-category">Booking</p>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card card-stats card-primary">
-                                    <div class="card-body ">
-                                        <div class="row">
-
-                                            <div class="col-7 d-flex align-items-center">
-                                                <div class="numbers">
-                                                    <p class="card-category">Promotions</p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card card-stats card-dangers">
-                                    <div class="card-body">
-                                        <div class="row">
-
-                                            <div class="col-7 d-flex align-items-center">
-                                                <div class="numbers">
-                                                    <p class="card-category">Operation</p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="content">                   
+                    <div class="card">
+                        <div class="header">
+                            <a href="<c:url value="/admin/formService" />" class="btn btn-success waves-effect">Create Service</a>
                         </div>
-                    </div>
-                </div>
-            </div>
+                        <div class="body table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead class="btn-success">   
+                                    <tr>                                        
+                                        <th style="width: 8%">Service Name</th>
+                                        <th style="width: 1%">Price</th>
+                                        <th style="width: 5%">Quantity</th>                                     
+                                        <th style="width: 1%">Unit</th>
+                                        <th style="width: 1%">Charge Date</th>                                 
+                                        <th style="width: 4%"></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <!-- loop over and print our customers -->
+                                <c:forEach var="listCharge" items="${pagedListCharge.pageList}">
+
+                                    <!-- construct an "delete" link with customer id -->
+                                    <c:url var="deleteLink" value="/admin/deleteService">
+                                        <c:param name="chargeId" value="${listCharge.chargeId}" />
+                                    </c:url>
+                                    <!-- construct an "update" link with customer id -->
+                                    <c:url var="updateLink" value="/admin/updateService">
+                                        <c:param name="chargeId" value="${listCharge.chargeId}" />
+                                    </c:url>
+
+
+                                    <tr>
+                                        <td>${listCharge.service.serviceName}</td>
+                                        <td>${listCharge.service.price}$</td>
+                                        <td>${listCharge.quantity}</td>
+                                        <td>${listCharge.service.unit}</td>
+                                        <td>${listCharge.chargeDate}</td>
+                                        <td>
+                                            <a href="${deleteLink}" onclick="if (!(confirm('Do you want to delete this service??')))
+                                                        return false" class ="btn btn-danger btn-delete"><i class="material-icons">delete</i></a>
+                                            <a href="${updateLink}" class="btn btn-info"><i class="material-icons">edit</i></a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>  
+                                </tbody>
+                            </table>
+                            <center>
+                                <ul class="pagination">
+                                    <li><a href="#">&laquo</a></li>
+                                    <li class="active"><a href="<c:url value="/admin/Listroom/" />">1</a></li>
+                                    <li><a href="<c:url value="/admin/Listroom/" />">2</a></li>
+                                    <li><a href="<c:url value="/admin/Listroom/" />">3</a></li>
+                                    <li><a href="<c:url value="" />">4</a></li>
+                                    <li><a href="<c:url value="" />">5</a></li>
+                                    <li><a href="#">&raquo</a></li>
+                                </ul>
+                            </center>
+                        </div>
+                    </div>                    
+                </div>  
+            </div> 
+            <!-- #END# Basic Table -->
+
 
     </body>
     <script src="../resources/assets/js/core/jquery.3.2.1.min.js"></script>

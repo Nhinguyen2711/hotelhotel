@@ -2057,7 +2057,7 @@ body {
   border-right: 1px solid #eee;
   color: #333333;
   z-index: 1001;
-  font-size: 18px;
+  font-size: 40px;
   font-weight: 600;
   padding-left: 25px;
   padding-right: 25px;
@@ -2065,7 +2065,7 @@ body {
   display: inline-block;
 }
 .main-header .logo-header a.logo {
-  color: #575962;
+  color: #235bee;
 }
 .main-header .logo-header .navbar-toggler {
   padding-left: 0px;

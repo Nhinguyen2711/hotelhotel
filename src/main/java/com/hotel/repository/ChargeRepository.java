@@ -5,19 +5,17 @@
  */
 package com.hotel.repository;
 
-import com.hotel.entity.RoomType;
+import com.hotel.entity.Charge;
 import java.util.List;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author Administrator
+ * @author Nhi
  */
 @Repository
-public interface RoomTypeRepository extends CrudRepository<RoomType, Integer>{
-    @Query(value = "select * from roomtype", nativeQuery = true)
-    List<RoomType> findAllRoomType();
-    public RoomType findByTypename(String typename);
+public interface ChargeRepository extends CrudRepository<Charge, Integer>{
+
+    
 }
