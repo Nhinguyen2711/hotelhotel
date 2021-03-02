@@ -186,17 +186,18 @@ and open the template in the editor.
                 <div class="content">                   
                     <div class="card">
                         <div class="header">
-                            <a href="<c:url value="/admin/formService" />" class="btn btn-success waves-effect">Create Service</a>
+                            <a href="<c:url value="/admin/formService" />" class="btn btn-success waves-effect">Add Service</a>
                         </div>
                         <div class="body table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead class="btn-success">   
-                                    <tr>                                        
+                                    <tr>
+                                        <th style="width: 8%">Room Number</th>
                                         <th style="width: 8%">Service Name</th>
                                         <th style="width: 1%">Price</th>
-                                        <th style="width: 5%">Quantity</th>                                     
+                                        <th style="width: 1%">Quantity</th>                                     
                                         <th style="width: 1%">Unit</th>
-                                        <th style="width: 1%">Charge Date</th>                                 
+                                        <th style="width: 4%">Charge Date</th>                                 
                                         <th style="width: 4%"></th>
                                     </tr>
                                 </thead>
@@ -216,6 +217,7 @@ and open the template in the editor.
 
 
                                     <tr>
+                                        <td>${listCharge.room.roomnumber}</td>
                                         <td>${listCharge.service.serviceName}</td>
                                         <td>${listCharge.service.price}$</td>
                                         <td>${listCharge.quantity}</td>

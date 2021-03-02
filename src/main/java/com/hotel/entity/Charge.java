@@ -1,6 +1,7 @@
 package com.hotel.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "charge")
@@ -19,6 +23,7 @@ public class Charge {
 	@Column(name = "chargeid")
 	private int chargeId;
 	@Column(name = "chargedate")
+        @DateTimeFormat(pattern = "yyyy/MM/dd")
 	private LocalDateTime chargeDate;
 	@Column(name = "quantity")
 	private int quantity;
@@ -27,20 +32,25 @@ public class Charge {
 	private Services service;
         
         @ManyToOne
-        @JoinColumn(name ="bookingid")
+        @JoinColumn(name="roomid")
+        private Room room;
+        
+        @ManyToOne
+        @JoinColumn(name="bookingid")
         private Booking booking;
-
+        
 	@ManyToOne
 	@JoinColumn(name = "booking_detalis_id")
 	private BookingDetails bookingDetails;
 
-    public Booking getBooking() {
-        return booking;
+    public Room getRoom() {
+        return room;
     }
 
-    public void setBooking(Booking booking) {
-        this.booking = booking;
+    public void setRoom(Room room) {
+        this.room = room;
     }
+        
 
     public BookingDetails getBookingDetails() {
         return bookingDetails;
@@ -85,6 +95,15 @@ public class Charge {
 	public void setService(Services service) {
 		this.service = service;
 	}
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+        
 
 
 

@@ -8,6 +8,7 @@ package com.hotel.controller;
 import com.hotel.entity.Booking;
 import com.hotel.entity.Charge;
 import com.hotel.service.BookingService;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,9 @@ public class UsingServiceController {
     BookingService bookingService;
 
     @GetMapping(value = "/usingService")
-    public String usingService(HttpServletRequest request, @RequestParam("bookingId") int bookingId, Model model) {
+    public String usingService(HttpServletRequest request, @RequestParam("bookingId") int bookingId, Model model) {    
         Booking booking = bookingService.getBooking(bookingId);
-        List<Charge> charges = booking.getCharge();
+        List<Charge> charges = booking.getCharges();
         int page = ServletRequestUtils.getIntParameter(request, "p", 0);
         PagedListHolder pagedListHolder = new PagedListHolder(charges);
         pagedListHolder.setPage(page);

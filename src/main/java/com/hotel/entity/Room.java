@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -40,8 +41,8 @@ public class Room implements Serializable{
 	@Column(name = "description")
 	private String description;
         
-        @Transient
-        private int roomtypeid;
+        @OneToMany(mappedBy="room",fetch = FetchType.LAZY)
+        private List<Charge> charges;
 
 	@ManyToOne
 	@JoinColumn(name = "room_type_id")
@@ -53,7 +54,7 @@ public class Room implements Serializable{
         @OneToMany(mappedBy = "room", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Image> images;
 
-    public Room() {
+public Room() {
     }
 
     public Room(int roomid, int roomnumber, int floor, double price, String description, RoomType roomtype, List<Image> images) {
@@ -66,14 +67,15 @@ public class Room implements Serializable{
         this.images = images;
     }
 
-    public int getRoomtypeid() {
-        return roomtypeid;
+    public List<Charge> getCharges() {
+        return charges;
     }
 
-    public void setRoomtypeid(int roomtypeid) {
-        this.roomtypeid = roomtypeid;
+    public void setCharges(List<Charge> charges) {
+        this.charges = charges;
     }
-    
+ 
+   
 
     public int getRoomid() {
         return roomid;

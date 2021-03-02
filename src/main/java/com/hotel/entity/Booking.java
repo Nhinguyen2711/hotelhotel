@@ -34,7 +34,7 @@ public class Booking implements Serializable {
 	private String bookinguid;
 
 	@Column(name = "bookingdate")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private LocalDate bookingDate;
 
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
@@ -70,9 +70,9 @@ public class Booking implements Serializable {
         @Column (name="email")
         private String email;
         
-        @OneToMany (mappedBy = "booking",fetch = FetchType.LAZY)
-        private List<Charge> charge;
-        
+        @OneToMany(mappedBy = "booking",fetch = FetchType.LAZY)
+        private List<Charge> charges;
+       
 	@OneToMany(mappedBy = "booking", fetch = FetchType.LAZY)
 	private List<BookingDetails> bookingdetails;
 
@@ -86,6 +86,16 @@ public class Booking implements Serializable {
         @ManyToOne
         @JoinColumn(name ="promid")
         private Promotion promotion;
+
+    public List<Charge> getCharges() {
+        return charges;
+    }
+
+    public void setCharges(List<Charge> charges) {
+        this.charges = charges;
+    }
+        
+        
 
     public RoomType getRoomtype() {
         return roomtype;
@@ -117,14 +127,6 @@ public class Booking implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<Charge> getCharge() {
-        return charge;
-    }
-
-    public void setCharge(List<Charge> charge) {
-        this.charge = charge;
     }
 
 	public Booking() {
