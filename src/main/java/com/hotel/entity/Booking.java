@@ -16,6 +16,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -32,15 +42,18 @@ public class Booking implements Serializable {
 
 	@Column(name = "booking_uid")
 	private String bookinguid;
+        
 
 	@Column(name = "bookingdate")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private LocalDate bookingDate;
-
+        
+        
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Column(name = "checkindate")
 	private Date checkInDate;
-
+       
+        
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Column(name = "checkoutdate")
 	private Date checkOutDate;
@@ -50,10 +63,12 @@ public class Booking implements Serializable {
 
 	@Column(name = "note")
 	private String note;
-
+        
+        @Range( min = 1, max = 909, message = "Please choose rooms from 1 to 909")
 	@Column(name = "numberOfRooms")
 	private int numberOfRooms;
-
+        
+        @Min(value = 0)
 	@Column(name = "price")
 	private double price;
 
@@ -61,12 +76,16 @@ public class Booking implements Serializable {
 	@Column(name = "cancelDate")
 	private Date cancelDate;
         
+        @Size( min = 3, max = 200, message = "The name must be between 3 and 200 characters")
         @Column (name= "guesName")
         private String guesName;
-        
+         
+        @NotEmpty(message = "Enter 8 numbers to 12 numbers")
+        @Pattern(regexp = "(^$|[0-9]{8,12})", message = "Enter 8 numbers to 12 numbers")
         @Column (name="phoneNumber")
         private String phoneNumber;
-        
+              
+        @NotEmpty(message = "can not empty")
         @Column (name="email")
         private String email;
         

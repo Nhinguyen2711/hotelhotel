@@ -30,6 +30,11 @@ and open the template in the editor.
         <link rel="stylesheet" href="../resources/assets/css/demo.css">
         <link rel="stylesheet" href="../resources/assets/css/style.css">
         <link rel="stylesheet" href="../resources/assets/css/bootstrap.css">
+        <style>
+            .error{
+                color: red;
+            }
+        </style>
     </head>
     <body>
         <div class="wrapper">
@@ -153,7 +158,7 @@ and open the template in the editor.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<c:url value="/admin/ListBooking" />">
+                            <a href="<c:url value="/user/ListBooking" />">
                                 <i class="la la-th"></i>
                                 <p>Booking</p>
 
@@ -167,9 +172,9 @@ and open the template in the editor.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="typography.html">
+                            <a href="<c:url value="/admin/ListEmployee" />">
                                 <i class="la la-font"></i>
-                                <p>Report</p>
+                                <p>Employee</p>
 
                             </a>
                         </li>
@@ -196,22 +201,25 @@ and open the template in the editor.
                                 <div class="form-group">
                                     <label for="largeInput">Service Name</label>
                                     <form:input path="serviceName" class="form-control form-control-lg" id="largeInput" placeholder="Large Input"/>
+                                    <form:errors path="serviceName" cssClass="error"/>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="comment">Description</label>
                                     <form:textarea path="description" class="form-control" id="comment" rows="5"/>
-
+                                    <form:errors path="description" cssClass="error"/>
                                     </textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="largeInput">Unit</label>
                                     <form:input path="unit" class="form-control form-control" id="defaultInput" placeholder="Default Input"/>
+                                    <form:errors path="unit" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="smallInput">Price</label>
                                     <form:input path="price" class="form-control form-control-sm" id="smallInput" placeholder="Small Input"/>
+                                    <form:errors path="unit" cssClass="error"/>
                                 </div>
 
                                 <div class="card-action">

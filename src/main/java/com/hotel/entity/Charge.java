@@ -13,6 +13,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Positive;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -22,11 +25,16 @@ public class Charge {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "chargeid")
 	private int chargeId;
+        
+        
 	@Column(name = "chargedate")
         @DateTimeFormat(pattern = "yyyy/MM/dd")
 	private LocalDateTime chargeDate;
-	@Column(name = "quantity")
+
+        @Max (value = 100, message = "quantity not more than 100")
+        @Column(name = "quantity")
 	private int quantity;
+        
 	@ManyToOne
 	@JoinColumn(name = "serviceid")
 	private Services service;

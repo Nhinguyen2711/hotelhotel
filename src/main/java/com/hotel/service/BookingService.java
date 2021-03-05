@@ -62,5 +62,10 @@ public class BookingService implements BookingServiceIF{
         Optional<Booking> booking = bookingRepository.findById(bookingId);
         return booking.isPresent() ? booking.get() : null;
     }
+
+    @Override
+    public int getBookingByStatus(String status, int roomid) {
+       return bookingRepository.getBookingByStatus(status, roomid);
+    }
     
 }

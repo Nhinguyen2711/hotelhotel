@@ -5,7 +5,7 @@
  */
 package com.hotel.service;
 
-import com.hotel.entity.Services;
+import com.hotel.entity.Employee;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +14,10 @@ import org.springframework.stereotype.Service;
  * @author Nhi
  */
 @Service
-public interface ServiceServiceIF {
-    public List<Services> getAllService();
-    public void saveService(Services services);
-    public void deleteService(int serviceId);
-    public Services getService(int serviceId);
-    public Services getServiceByServiceName(String serviceName);
+public interface EmployeeServiceIF {
+    public List<Employee> getAllEmployee();
+    public void saveEmployee(Employee employee);
+    public void deleteEmployee(int empId);
+    public Employee getEmployee(int empId);
     
 }

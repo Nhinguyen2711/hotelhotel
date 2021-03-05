@@ -30,6 +30,11 @@ and open the template in the editor.
         <link rel="stylesheet" href="../resources/assets/css/demo.css">
         <link rel="stylesheet" href="../resources/assets/css/style.css">
         <link rel="stylesheet" href="../resources/assets/css/bootstrap.css">
+        <style>
+            .error{
+                color: red;
+            }
+        </style>
     </head>
     <body>
         <div class="wrapper">
@@ -153,7 +158,7 @@ and open the template in the editor.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<c:url value="/admin/ListBooking" />">
+                            <a href="<c:url value="/user/ListBooking" />">
                                 <i class="la la-th"></i>
                                 <p>Booking</p>
 
@@ -196,13 +201,14 @@ and open the template in the editor.
                                 <div class="form-group">
                                     <label for="largeInput">Room Type</label>
                                     <form:input path="typename" class="form-control form-control-lg" id="largeInput" placeholder="room type"/>
+                                    <form:errors path="typename" cssClass="error" />
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="comment">Description</label>
                                     <form:textarea path="description" class="form-control" id="comment" rows="5"/>
-
-                                    </textarea>
+                                    <form:errors path="description" cssClass="error" />
+                                    
                                 </div>
                                 <div class="form-group">
                                     <label for="defaultSelect">Number People</label>

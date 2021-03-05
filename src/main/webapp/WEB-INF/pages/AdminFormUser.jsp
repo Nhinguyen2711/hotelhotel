@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -28,6 +30,11 @@ and open the template in the editor.
         <link rel="stylesheet" href="../resources/assets/css/demo.css">
         <link rel="stylesheet" href="../resources/assets/css/style.css">
         <link rel="stylesheet" href="../resources/assets/css/bootstrap.css">
+        <style>
+            .error{
+                color: red;
+            }
+        </style>
     </head>
     <body>
         <div class="wrapper">
@@ -130,7 +137,7 @@ and open the template in the editor.
                     </div>
                     <ul class="nav">
                         <li class="nav-item active">
-                            <a href="<c:url value="/admin/" />" >
+                            <a href="<c:url value="/admin/" />">
                                 <i class="la la-dashboard"></i>
                                 <p>Home</p>
 
@@ -185,79 +192,69 @@ and open the template in the editor.
             <div class="main-panel">
                 <div class="content">                   
                     <div class="card">
-                        <div class="header">
-                        <a href="<c:url value="/user/formBooking" />" class="btn btn-success waves-effect">Create Booking</a>
-                        <a href="<c:url value="/user/formAddService" />" class="btn btn-success waves-effect">Add Using Service</a>
-                        </div>
-                        <div class="body table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <thead class="btn-success">   
-                                    <tr>
-                                        <th style="width: 4%">Customer Name</th> 
-                                        <th style="width: 4%">Phone Number</th>
-                                        <th style="width: 4%">Email</th>
-                                        <th style="width: 4%">Check-in Date</th>                                     
-                                        <th style="width: 1%">Check-out Date</th>
-                                        <th style="width: 1%">RoomOfNumber</th>                                  
-                                        <th style="width: 4%">Status</th>
-                                        <th style="width: 4%">Booking Code</th>
-                                        <th style="width: 4%">Service</th>
-                                        <th style="width: 4%">Price</th>
-                                        <th style="width: 4%"></th>
-                                    </tr>
-                                </thead>
+                        <div class="card-header">
+                            <div class="card-title">Form User</div>
+                        </div>                       
+                        <form:form class="form-horizontal" action="addEmployee" method="POST" modelAttribute="employee">
+                            <div class="card-body">
+                                <form:hidden path="empId" />
+                                <div class="form-group">
+                                    <label for="largeInput">FirstName LastName</label>
+                                    <form:input path="empName" class="form-control form-control-lg" id="largeInput" placeholder=""/>
+                                    <form:errors path="empName" cssClass="error" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="largeInput">ID Name</label>
+                                    <form:input path="username" class="form-control form-control-lg" id="largeInput" placeholder=""/>
+                                    <form:errors path="username" cssClass="error" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="largeInput">Password</label>
+                                    <form:input path="password" class="form-control form-control-lg" id="largeInput" placeholder=""/>
+                                    <form:errors path="password" cssClass="error" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="defaultSelect">Role Name</label>
+                                    <form:select path="roleName" class="form-control form-control" id="defaultSelect">
+                                           <form:option value=""></form:option>
+                                            <form:option value="ROLE_ADMIN"></form:option>
+                                            <form:option value="ROLE_USER"></form:option>
+                                    </form:select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="defaultSelect">Gender</label>
+                                    <form:select path="gender" class="form-control form-control" id="defaultSelect">                                       
+                                            <form:option value="Male"></form:option>
+                                            <form:option value="Female"></form:option>
+                                    </form:select>
+                                    <form:errors path="gender" cssClass="error" />
+                                </div>
+                                <div class="bdate">
+                                    <label for="birthday">Birthday</label><br>
+                                    <form:input  id="birthday" class="date-picker" path="dateOfBirth" placeholder="YYYY/MM/DD" name="arrival"/>
+                                    <i class="mdi mdi-calendar-text"></i>
+                                    <form:errors path="dateOfBirth" cssClass="error"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="largeInput">Address</label>
+                                    <form:input path="address" class="form-control form-control-lg" id="largeInput" placeholder=""/>
+                                    <form:errors path="address" cssClass="error" />
+                                </div>
 
-                                <tbody>
-                                    <!-- loop over and print our customers -->
-                                    <c:forEach var="listBooking" items="${pagedListBooking.pageList}">
+                                <div class="form-group">
+                                    <label for="largeInput">Phone Number</label>
+                                    <form:input path="phone" class="form-control form-control-lg" id="largeInput" placeholder=""/>
+                                    <form:errors path="phone" cssClass="error" />
+                                </div>          
 
-                                        <!-- construct an "delete" link with customer id -->
-                                        <c:url var="deleteLink" value="/user/deleteBooking">
-                                            <c:param name="bookingId" value="${listBooking.bookingId}" />
-                                        </c:url>
-                                        <!-- construct an "update" link with customer id -->
-                                        <c:url var="updateLink" value="/user/updateBooking">
-                                            <c:param name="bookingId" value="${listBooking.bookingId}" />
-                                        </c:url>
-                                        
-                                        <c:url var="usingService" value="/user/usingService">
-                                            <c:param name="bookingId" value="${listBooking.bookingId}" />
-                                        </c:url>
+                                <div class="card-action">
+                                    <button class="btn btn-success">Submit</button>
+                                    <button class="btn btn-danger">Cancel</button>
+                                </div>
+                            </div>
+                        </form:form>
 
-
-                                        <tr>
-                                            <td>${listBooking.guesName}</td>
-                                            <td>${listBooking.phoneNumber}</td>
-                                            <td>${listBooking.email}</td>
-                                            <td>${listBooking.checkInDate}</td>
-                                            <td>${listBooking.checkOutDate}</td>
-                                            <td>${listBooking.numberOfRooms}</td>
-                                            <td>${listBooking.status}</td>
-                                            <td>${listBooking.bookinguid}</td>
-                                            <td><a href="${usingService}" class="btn btn-info">Chi Tiết</a></td>
-                                            <td>${listBooking.price}$</td>
-                                            <td>
-                                                <a href="${deleteLink}" onclick="if (!(confirm('Do you want to delete this booking??')))
-                                                            return false" class ="btn btn-danger btn-delete"><i class="material-icons">delete</i></a>
-                                                <a href="${updateLink}" class="btn btn-info"><i class="material-icons">edit</i></a>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>  
-                                </tbody>
-                            </table>
-                            <center>
-                                <ul class="pagination">
-                                    <li><a href="#">&laquo</a></li>
-                                    <li class="active"><a href="<c:url value="/admin/Listroom/" />">1</a></li>
-                                    <li><a href="<c:url value="/admin/Listroom/" />">2</a></li>
-                                    <li><a href="<c:url value="/admin/Listroom/" />">3</a></li>
-                                    <li><a href="<c:url value="" />">4</a></li>
-                                    <li><a href="<c:url value="" />">5</a></li>
-                                    <li><a href="#">&raquo</a></li>
-                                </ul>
-                            </center>
-                        </div>
-                    </div>                    
+                    </div>
                 </div>  
             </div> 
             <!-- #END# Basic Table -->

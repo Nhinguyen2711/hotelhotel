@@ -5,14 +5,15 @@
  */
 package com.hotel.repository;
 
-import com.hotel.entity.Services;
+import com.hotel.entity.Employee;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Nhi
  */
-public interface ServiceRepository extends CrudRepository<Services, Integer>{
-    public Services findByserviceName(String serviceName);
+@Repository
+public interface EmployeeRepository extends CrudRepository<Employee, Integer>{
     
 }

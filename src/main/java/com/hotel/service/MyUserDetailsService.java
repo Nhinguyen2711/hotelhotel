@@ -39,7 +39,7 @@ public class MyUserDetailsService implements UserDetailsService {
             return null;
         }
 
-        Set<Role> roleName =  employee.getListRole();
+        List<Role> roleName =  employee.getListRole();
         Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
         // Chuyen kieu Role entity thanh Role cua Spring Security
 

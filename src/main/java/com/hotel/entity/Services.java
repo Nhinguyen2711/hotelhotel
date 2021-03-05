@@ -11,6 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "Service")
@@ -19,16 +24,26 @@ public class Services {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "serviceid")
 	private int serviceId;
+        
+        @Size(min = 3, max = 200, message = "Enter 3 to 200 characters")
 	@Column(name = "servicename")
 	private String serviceName;
+        
+        @NotEmpty( message = "Can not empty")
 	@Column(name = "description")
 	private String description;
+        
+        @NotEmpty (message = "Can not empty")
 	@Column(name = "unit")
 	private String unit;
+        
+        @Min(value = 1, message = "the price is not less than 1")
 	@Column(name = "price")
 	private String price;
+        
 	@OneToMany(mappedBy = "service", fetch = FetchType.LAZY)
 	private List<Charge> charges=new ArrayList<Charge>();
+        
 	public Services() {
 		super();
 	}

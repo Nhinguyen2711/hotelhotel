@@ -28,4 +28,5 @@ public interface RoomServiceIF {
     public void deleteRoom(int roomid);
 
     public Room getRoom(int roomid);
+    public Room getRoomByRoomNumber(int roomnumber);
 }

@@ -32,6 +32,7 @@
     <http use-expressions="true">
 		
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/user/**" access="hasAnyRole('ROLE_USER , ROLE_ADMIN')" />
         <intercept-url pattern="/**" access="permitAll" />
         
         <!-- access denied page -->

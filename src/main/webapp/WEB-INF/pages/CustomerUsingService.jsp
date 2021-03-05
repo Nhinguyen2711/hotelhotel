@@ -151,7 +151,7 @@ and open the template in the editor.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<c:url value="/admin/ListBooking" />">
+                            <a href="<c:url value="/user/ListBooking" />">
                             <i class="la la-th"></i>
                             <p>Booking</p>
 
@@ -165,9 +165,9 @@ and open the template in the editor.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="typography.html">
+                            <a href="<c:url value="/admin/ListEmployee" />">
                                 <i class="la la-font"></i>
-                                <p>Report</p>
+                                <p>Employee</p>
 
                             </a>
                         </li>
@@ -186,7 +186,7 @@ and open the template in the editor.
                 <div class="content">                   
                     <div class="card">
                         <div class="header">
-                            <a href="<c:url value="/admin/formService" />" class="btn btn-success waves-effect">Add Service</a>
+                            <a href="<c:url value="/user/formAddService" />" class="btn btn-success waves-effect">Add Using Service</a>
                         </div>
                         <div class="body table-responsive">
                             <table class="table table-bordered table-striped">
@@ -207,11 +207,11 @@ and open the template in the editor.
                                 <c:forEach var="listCharge" items="${pagedListCharge.pageList}">
 
                                     <!-- construct an "delete" link with customer id -->
-                                    <c:url var="deleteLink" value="/admin/deleteService">
+                                    <c:url var="deleteLink" value="/user/deleteService">
                                         <c:param name="chargeId" value="${listCharge.chargeId}" />
                                     </c:url>
                                     <!-- construct an "update" link with customer id -->
-                                    <c:url var="updateLink" value="/admin/updateService">
+                                    <c:url var="updateLink" value="/user/updateService">
                                         <c:param name="chargeId" value="${listCharge.chargeId}" />
                                     </c:url>
 

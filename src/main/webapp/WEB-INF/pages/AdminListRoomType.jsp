@@ -151,7 +151,7 @@ and open the template in the editor.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<c:url value="/admin/ListBooking" />">
+                            <a href="<c:url value="/user/ListBooking" />">
                                 <i class="la la-th"></i>
                                 <p>Booking</p>
 
@@ -165,9 +165,9 @@ and open the template in the editor.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="typography.html">
+                            <a href="<c:url value="/admin/ListEmployee" />">
                                 <i class="la la-font"></i>
-                                <p>Report</p>
+                                <p>Employee</p>
 
                             </a>
                         </li>

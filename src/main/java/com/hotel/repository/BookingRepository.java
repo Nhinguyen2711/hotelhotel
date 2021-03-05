@@ -18,4 +18,9 @@ import org.springframework.stereotype.Repository;
 public interface BookingRepository extends CrudRepository<Booking, Integer>{
     @Query(value = "select * from booking where booking_uid = ?1", nativeQuery = true)
     Booking findByUid(String bookinguid);
+    
+    @Query(value = "select bookingid from bookingdetails join booking" +
+" on bookingdetails.bookingid = booking.bookingid" +
+" where status =?1 and roomid =?2", nativeQuery = true)
+    public int getBookingByStatus(String status,int roomid);
 }

@@ -17,6 +17,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "room")
@@ -28,16 +34,22 @@ public class Room implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "roomid")
 	private int roomid;
-
+        
+        @Min(value = 100 , message = "enter the room number from 100 to 909")
+        @Max(value = 909, message = "enter the room number from 100 to 909")
 	@Column(name = "room_number")
 	private int roomnumber;
 
+        @Min(value = 1, message = "enter numbers 1 to 9")
+        @Max(value = 9, message = "enter numbers 1 to 9")
 	@Column(name = "floor")
 	private int floor;
 
+        @Min(value = 1 , message = "Only enter numbers")
         @Column(name = "price")
 	private double price;
         
+        @NotEmpty(message = "Can not empty")
 	@Column(name = "description")
 	private String description;
         

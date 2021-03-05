@@ -186,58 +186,45 @@ and open the template in the editor.
                 <div class="content">                   
                     <div class="card">
                         <div class="header">
-                        <a href="<c:url value="/user/formBooking" />" class="btn btn-success waves-effect">Create Booking</a>
-                        <a href="<c:url value="/user/formAddService" />" class="btn btn-success waves-effect">Add Using Service</a>
+                            <a href="<c:url value="/admin/formEmployee" />" class="btn btn-success waves-effect">Create Employee</a>
                         </div>
                         <div class="body table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead class="btn-success">   
                                     <tr>
-                                        <th style="width: 4%">Customer Name</th> 
-                                        <th style="width: 4%">Phone Number</th>
-                                        <th style="width: 4%">Email</th>
-                                        <th style="width: 4%">Check-in Date</th>                                     
-                                        <th style="width: 1%">Check-out Date</th>
-                                        <th style="width: 1%">RoomOfNumber</th>                                  
-                                        <th style="width: 4%">Status</th>
-                                        <th style="width: 4%">Booking Code</th>
-                                        <th style="width: 4%">Service</th>
-                                        <th style="width: 4%">Price</th>
+                                        <th style="width: 8%">Employee Name</th>                       
+                                        <th style="width: 8%">ID Name</th>                                     
+                                        <th style="width: 1%">Gender</th>
+                                        <th style="width: 2%">Birthday</th>
+                                        <th style="width: 7%">Address</th>
+                                        <th style="width: 2%">Phone Number</th>
                                         <th style="width: 4%"></th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <!-- loop over and print our customers -->
-                                    <c:forEach var="listBooking" items="${pagedListBooking.pageList}">
+                                    <c:forEach var="listEmployee" items="${pagedListEmployee.pageList}">
 
                                         <!-- construct an "delete" link with customer id -->
-                                        <c:url var="deleteLink" value="/user/deleteBooking">
-                                            <c:param name="bookingId" value="${listBooking.bookingId}" />
+                                        <c:url var="deleteLink" value="/admin/deleteEmployee">
+                                            <c:param name="empId" value="${listEmployee.empId}" />
                                         </c:url>
                                         <!-- construct an "update" link with customer id -->
-                                        <c:url var="updateLink" value="/user/updateBooking">
-                                            <c:param name="bookingId" value="${listBooking.bookingId}" />
-                                        </c:url>
-                                        
-                                        <c:url var="usingService" value="/user/usingService">
-                                            <c:param name="bookingId" value="${listBooking.bookingId}" />
+                                        <c:url var="updateLink" value="/admin/updateEmployee">
+                                            <c:param name="empId" value="${listEmployee.empId}" />
                                         </c:url>
 
 
                                         <tr>
-                                            <td>${listBooking.guesName}</td>
-                                            <td>${listBooking.phoneNumber}</td>
-                                            <td>${listBooking.email}</td>
-                                            <td>${listBooking.checkInDate}</td>
-                                            <td>${listBooking.checkOutDate}</td>
-                                            <td>${listBooking.numberOfRooms}</td>
-                                            <td>${listBooking.status}</td>
-                                            <td>${listBooking.bookinguid}</td>
-                                            <td><a href="${usingService}" class="btn btn-info">Chi Tiết</a></td>
-                                            <td>${listBooking.price}$</td>
+                                            <td>${listEmployee.empName}</td>
+                                            <td>${listEmployee.username}</td>
+                                            <td>${listEmployee.gender}</td>
+                                            <td>${listEmployee.dateOfBirth}</td>
+                                            <td>${listEmployee.address}</td>
+                                            <td>${listEmployee.phone}</td>
                                             <td>
-                                                <a href="${deleteLink}" onclick="if (!(confirm('Do you want to delete this booking??')))
+                                                <a href="${deleteLink}" onclick="if (!(confirm('Do you want to delete this service??')))
                                                             return false" class ="btn btn-danger btn-delete"><i class="material-icons">delete</i></a>
                                                 <a href="${updateLink}" class="btn btn-info"><i class="material-icons">edit</i></a>
                                             </td>

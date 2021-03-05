@@ -5,15 +5,16 @@
  */
 package com.hotel.service;
 
-import com.hotel.entity.BookingDetails;
+import com.hotel.entity.Role;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
  *
- * @author Administrator
+ * @author Nhi
  */
 @Service
-public interface BookingDetailsServiceIF {
-    public BookingDetails save(BookingDetails bookingDetails);
-    public BookingDetails getBookingDetailsByRoomid(int roomid);
+public interface RoleServiceIF {
+    public List<Role> getAllRole();
+    public Role getRoleByRoleName(String roleName);
 }

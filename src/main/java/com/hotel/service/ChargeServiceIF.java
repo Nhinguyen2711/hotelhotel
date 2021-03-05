@@ -5,15 +5,17 @@
  */
 package com.hotel.service;
 
-import com.hotel.entity.BookingDetails;
+import com.hotel.entity.Charge;
 import org.springframework.stereotype.Service;
 
 /**
  *
- * @author Administrator
+ * @author Nhi
  */
 @Service
-public interface BookingDetailsServiceIF {
-    public BookingDetails save(BookingDetails bookingDetails);
-    public BookingDetails getBookingDetailsByRoomid(int roomid);
+public interface ChargeServiceIF {
+
+    public void saveCharge(Charge charge);
 }
+    
+

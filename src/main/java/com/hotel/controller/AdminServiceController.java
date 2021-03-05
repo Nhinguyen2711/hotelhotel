@@ -9,10 +9,12 @@ import com.hotel.entity.Services;
 import com.hotel.service.ServiceService;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -50,7 +52,10 @@ public class AdminServiceController {
     }
     
     @PostMapping(value = "addService")
-    public String addService(@ModelAttribute("service") Services service) {
+    public String addService(@ModelAttribute("service") @Valid Services service, BindingResult result) {
+        if(result.hasErrors()){
+        return "AdminFormService";
+        }
         serviceService.saveService(service);
         return "redirect:/admin/ListService";
     }

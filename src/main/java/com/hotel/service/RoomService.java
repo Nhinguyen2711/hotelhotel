@@ -67,4 +67,10 @@ public class RoomService implements RoomServiceIF{
         Optional<Room> rooms = roomRepository.findById(roomid);
         return rooms.isPresent() ? rooms.get() : null;
     }
+
+    @Override
+    public Room getRoomByRoomNumber(int roomnumber) {
+        Room room = roomRepository.findByroomnumber(roomnumber);
+        return room;
+    }
 }

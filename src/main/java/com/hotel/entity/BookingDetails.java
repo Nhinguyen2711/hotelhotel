@@ -13,8 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -36,7 +35,7 @@ public class BookingDetails {
 	private Room room;
 
         @ManyToOne
-	@NotFound(action = NotFoundAction.IGNORE)
+	
 	@JoinColumn(name = "room_type_id")
 	private RoomType roomtype;
         

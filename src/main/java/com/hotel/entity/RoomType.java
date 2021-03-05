@@ -12,9 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
 
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name = "roomtype")
@@ -27,22 +30,25 @@ public class RoomType implements Serializable{
 	@Column(name = "room_type_id")
 	private int roomtypeid;
 
+        @Size(min = 3, max = 50, message = "Enter 3 to 50 characters")
 	@Column(name = "typename")
 	private String typename;
-
+        
+        @NotEmpty (message = "can not empty")
 	@Column(name = "description")
 	private String description;
         
+        @Min(value = 1, message = "numbers 1 to 20")
+        @Max (value = 20, message = "numbers 1 to 20")
         @Column(name = "number_of_people")
         private int numberofpeopke;
-
+        
 	private String image;
 
 	@OneToMany(mappedBy = "roomtype", fetch = FetchType.EAGER)
 	private List<Room> rooms;
         
         @OneToMany(mappedBy = "roomtype", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-	@NotFound(action = NotFoundAction.IGNORE)
 	private List<BookingDetails> bookingDetailses;
 
     public RoomType() {

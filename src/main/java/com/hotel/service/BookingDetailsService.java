@@ -24,5 +24,10 @@ public class BookingDetailsService implements BookingDetailsServiceIF{
     public BookingDetails save(BookingDetails bookingDetails) {
         return  bookingDetailsRepository.save(bookingDetails);
     }
+
+    @Override
+    public BookingDetails getBookingDetailsByRoomid(int roomid) {
+    return   bookingDetailsRepository.findByRoomid(roomid);
+    }
     
 }

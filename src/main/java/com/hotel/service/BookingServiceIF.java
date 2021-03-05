@@ -21,4 +21,5 @@ public interface BookingServiceIF {
     public void saveBooking(Booking booking);
     public void deleteBooking(int bookingId);
     public Booking getBooking(int bookingId);
+    public int getBookingByStatus(String status, int roomid);
 }

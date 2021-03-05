@@ -52,5 +52,11 @@ public class ServiceService implements ServiceServiceIF {
         Optional<Services> servicess = serviceRepository.findById(serviceId);
         return servicess.isPresent() ? servicess.get() : null;
     }
+
+    @Override
+    public Services getServiceByServiceName(String serviceName) {
+      Services service = serviceRepository.findByserviceName(serviceName);
+      return service;
+    }
     
 }

@@ -31,6 +31,11 @@ and open the template in the editor.
         <link rel="stylesheet" href="../resources/assets/css/demo.css">
         <link rel="stylesheet" href="../resources/assets/css/style.css">
         <link rel="stylesheet" href="../resources/assets/css/bootstrap.css">
+        <style>
+            .error{
+                color: red;
+            }
+        </style>
     </head>
     <body>
         <div class="wrapper">
@@ -154,7 +159,7 @@ and open the template in the editor.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<c:url value="/admin/ListBooking" />">
+                            <a href="<c:url value="/user/ListBooking" />">
                                 <i class="la la-th"></i>
                                 <p>Booking</p>
 
@@ -168,9 +173,9 @@ and open the template in the editor.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="typography.html">
+                            <a href="<c:url value="/admin/ListEmployee" />">
                                 <i class="la la-font"></i>
-                                <p>Report</p>
+                                <p>Employee</p>
 
                             </a>
                         </li>
@@ -197,28 +202,34 @@ and open the template in the editor.
                                 <div class="form-group">
                                     <label for="largeInput">Customer Name</label>
                                     <form:input path="guesName" class="form-control form-control-lg" id="largeInput" placeholder="Large Input"/>
+                                    <form:errors path="guesName" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="largeInput">Email</label>
                                     <form:input path="email" class="form-control form-control-lg" id="largeInput" placeholder="Large Input"/>
+                                    <form:errors path="email" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="largeInput">Phone Number</label>
                                     <form:input path="phoneNumber" class="form-control form-control-lg" id="largeInput" placeholder="Large Input"/>
+                                    <form:errors path="phoneNumber" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="smallInput">Code</label>
                                     <form:input path="bookinguid" class="form-control form-control-sm" id="smallInput" placeholder="Small Input"/>
+                                    <form:errors path="bookinguid" cssClass="error"/>
                                 </div>
                                 <div class="bdate">
                                     <label for="check-in">Check-In</label><br>
                                     <form:input  id="check-in" class="date-picker" path="checkInDate" placeholder="Arrive Date" name="arrival"/>
                                     <i class="mdi mdi-calendar-text"></i>
+                                    <form:errors path="checkInDate" cssClass="error"/>
                                 </div>
                                 <div class="bdate">
                                     <label for="check-out">Check-Out</label><br>
                                     <form:input  id="check-out" class="date-picker" path="checkOutDate" placeholder="Departure Date" name="depature"/>
                                     <i class="mdi mdi-calendar-text"></i>
+                                    <form:errors path="checkOutDate" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="largeSelect">Status</label>
@@ -239,10 +250,12 @@ and open the template in the editor.
                                 <div class="form-group">
                                     <label for="largeInput">NumberOfRooms</label>
                                     <form:input path="numberOfRooms" class="form-control form-control" id="defaultInput" placeholder="Default Input"/>
+                                    <form:errors path="numberOfRooms" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="smallInput">Price</label>
                                     <form:input path="price" class="form-control form-control-sm" id="smallInput" placeholder="Small Input"/>
+                                    <form:errors path="price" cssClass="error"/>
                                 </div>
                                 <div class="bdate">
                                     <label for="canceldate">Cancel Date</label><br>

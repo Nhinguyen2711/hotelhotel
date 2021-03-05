@@ -29,5 +29,5 @@ public interface RoomRepository extends CrudRepository<Room, Integer>{
             + " or (checkindate  >= ?2 and checkoutdate <= ?3)) order by room_number ASC", nativeQuery = true)
     List<Room> searchAvailableRoom(int roomTypeId, String checkInDate, String checkOutDate);
     
-   
+ public Room findByroomnumber(int roomnumber);
 }

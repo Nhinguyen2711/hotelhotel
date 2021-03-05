@@ -5,14 +5,16 @@
  */
 package com.hotel.repository;
 
-import com.hotel.entity.Services;
+import com.hotel.entity.Role;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Nhi
  */
-public interface ServiceRepository extends CrudRepository<Services, Integer>{
-    public Services findByserviceName(String serviceName);
+@Repository
+public interface RoleRepository extends CrudRepository<Role, Integer>{
+    public Role findByRoleName (String roleName);
     
 }
